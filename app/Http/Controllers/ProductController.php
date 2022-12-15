@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ProductController extends BaseController {
 
+    public function index() {
+
+        $product = Products::all();
+
+        return $this->sendResponse(ProductResource::collection($product), "OK");
+    }
+
     public function store(Request $request) {
         $input = $request->all();
         $validator = validator::make($input, [
