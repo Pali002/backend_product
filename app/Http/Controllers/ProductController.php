@@ -43,6 +43,12 @@ class ProductController extends BaseController {
         return $this->sendResponse(new ProductResource($product), "Post frissítve");
     }
 
+    public function delete($id) {
+
+        Products::destroy($id);
+        return $this->sendResponse([ ], "Post törölve");
+    }
+
     public function store(Request $request) {
         $input = $request->all();
         $validator = validator::make($input, [
