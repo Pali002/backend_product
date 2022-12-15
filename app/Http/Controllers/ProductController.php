@@ -15,6 +15,15 @@ class ProductController extends BaseController {
         return $this->sendResponse(ProductResource::collection($product), "OK");
     }
 
+    public function show($id) {
+        $product = Products::find($id);
+
+        if(is_null($product)) {
+            return $this->sendError("Post nem létezik");
+        }
+        return $this->sendResponse(new ProductResource($product), "Post betöltve");
+    }
+
     public function store(Request $request) {
         $input = $request->all();
         $validator = validator::make($input, [
