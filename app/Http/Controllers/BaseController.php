@@ -24,7 +24,7 @@ class BaseController extends Controller {
             "message" => $error
         ];
 
-        if( !epmty($errorMessage)) {
+        if(!epmty($errorMessage)) {
             $response["data"] = $errorMessage;
         }
 
